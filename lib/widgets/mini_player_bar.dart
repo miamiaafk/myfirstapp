@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/audio_player_service.dart';
-import 'player_screen.dart';
+// 注释掉报错的导入
+// import 'player_screen.dart';
 
 class MiniPlayerBar extends StatefulWidget {
   const MiniPlayerBar({super.key});
@@ -32,7 +33,8 @@ class _MiniPlayerBarState extends State<MiniPlayerBar> {
 
             return Container(
               decoration: BoxDecoration(
-                color: colorScheme.surfaceContainerHighest,
+                // 修复颜色属性
+                color: colorScheme.surface,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),
@@ -46,6 +48,8 @@ class _MiniPlayerBarState extends State<MiniPlayerBar> {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
+                      // 注释掉跳转页面
+                      /*
                       if (hasMusic) {
                         Navigator.push(
                           context,
@@ -54,6 +58,7 @@ class _MiniPlayerBarState extends State<MiniPlayerBar> {
                           ),
                         );
                       }
+                      */
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
