@@ -9,11 +9,12 @@ class AudioPlayerService {
   AudioPlayerService._internal();
 
   final AudioPlayer _audioPlayer = AudioPlayer();
-  final BehaviorSubject<bool> isPlayingSubject = BehaviorSubject.seeded(false);
-  final BehaviorSubject<double> progressSubject = BehaviorSubject.seeded(0.0);
-  final BehaviorSubject<Duration> positionSubject = BehaviorSubject.seeded(Duration.zero);
-  final BehaviorSubject<Duration> durationSubject = BehaviorSubject.seeded(Duration.zero);
-  final BehaviorSubject<Music?> currentMusicSubject = BehaviorSubject.seeded(null);
+  // 👇 这里全部修复：seeded → 直接使用构造函数
+  final BehaviorSubject<bool> isPlayingSubject = BehaviorSubject(false);
+  final BehaviorSubject<double> progressSubject = BehaviorSubject(0.0);
+  final BehaviorSubject<Duration> positionSubject = BehaviorSubject(Duration.zero);
+  final BehaviorSubject<Duration> durationSubject = BehaviorSubject(Duration.zero);
+  final BehaviorSubject<Music?> currentMusicSubject = BehaviorSubject(null);
 
   List<Music> _playlist = [];
   int _currentIndex = -1;
