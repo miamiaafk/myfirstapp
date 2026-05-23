@@ -1,0 +1,44 @@
+name: ncm_music_player
+description: 支持加密格式的本地音乐播放器
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  
+  audio_service: ^0.18.12
+  just_audio: ^0.9.36
+  audio_session: ^0.1.18
+  
+  permission_handler: ^11.1.0
+  
+  file_picker: ^6.1.1
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  
+  metadata_god: ^0.6.1
+  
+  http: ^1.1.2
+  
+  provider: ^6.1.1
+  
+  cached_network_image: ^3.3.1
+  
+  shared_preferences: ^2.2.2
+  
+  url_launcher: ^6.2.3
+  
+  flutter_lyric: ^2.0.4+6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
