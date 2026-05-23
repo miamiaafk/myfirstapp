@@ -24,7 +24,9 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.ncmplayer.music"
-    compileSdk flutter.compileSdkVersion
+    // 👇 这里强制改成 34 解决所有插件报错
+    compileSdk 34
+
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -43,7 +45,7 @@ android {
     defaultConfig {
         applicationId "com.ncmplayer.music"
         minSdkVersion 21
-        targetSdkVersion flutter.targetSdkVersion
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
