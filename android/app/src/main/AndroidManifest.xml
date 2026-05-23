@@ -17,17 +17,16 @@
     <application
         android:label="NCM 音乐播放器"
         android:name="${applicationName}"
-        <!-- 👇 这里我帮你注释掉了缺失的图标 -->
         android:requestLegacyExternalStorage="true">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            <!-- 👇 注释掉缺失的启动主题 -->
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-            <!-- 👇 注释掉缺失的普通主题 -->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
