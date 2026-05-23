@@ -16,6 +16,15 @@ allprojects {
         google()
         mavenCentral()
     }
+
+    // 👇 这行是专门给 GitHub 编译修复 namespace 报错的
+    afterEvaluate { project ->
+        if (project.name == "metadata_god") {
+            android {
+                namespace "com.example.metadatagod"
+            }
+        }
+    }
 }
 
 rootProject.buildDir = '../build'
