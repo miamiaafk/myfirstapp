@@ -1,52 +1,57 @@
 name: Build Flutter APK
-
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: gradle
-
+          
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.0'
           channel: 'stable'
           cache: true
-
+          
       - name: Flutter Pub Get
         run: flutter pub get
         env:
           PUB_HOSTED_URL: https://pub.flutter-io.cn
           FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn
+          
+      # 新增步骤：自动修复 metadata_god 插件的 namespace 报错
+      - name: Fix metadata_god namespace
+        run: |
+          BUILD_FILE=$(find $HOME/.pub-cache -path "*/metadata_god-*/android/build.gradle" | head -n 1)
+          if [ -f "$BUILD_FILE" ] && ! grep -q "namespace" "$BUILD_FILE"; then
+            sed -i '/android\s*{/a\    namespace "com.alfredbaudisch.metadata_god"' "$BUILD_FILE"
+          fi
 
       - name: Build Debug APK
         run: flutter build apk --debug
-
+        
       - name: Build Release APK (unsigned)
         run: flutter build apk --release
-
+        
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
           path: build/app/outputs/apk/debug/app-debug.apk
-
+          
       - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
